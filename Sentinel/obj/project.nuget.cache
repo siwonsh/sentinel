@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Bx1tHO4Uk94=",
+  "dgSpecHash": "LRqpxtImhxw=",
   "success": true,
   "projectFilePath": "C:\\Users\\siwon\\RiderProjects\\Sentinel\\Sentinel\\Sentinel.csproj",
   "expectedPackageFiles": [
@@ -35,11 +35,7 @@
     "C:\\Users\\siwon\\.nuget\\packages\\skiasharp.nativeassets.webassembly\\3.119.3-preview.1.1\\skiasharp.nativeassets.webassembly.3.119.3-preview.1.1.nupkg.sha512",
     "C:\\Users\\siwon\\.nuget\\packages\\skiasharp.nativeassets.win32\\3.119.3-preview.1.1\\skiasharp.nativeassets.win32.3.119.3-preview.1.1.nupkg.sha512",
     "C:\\Users\\siwon\\.nuget\\packages\\system.io.pipelines\\8.0.0\\system.io.pipelines.8.0.0.nupkg.sha512",
-    "C:\\Users\\siwon\\.nuget\\packages\\tmds.dbus.protocol\\0.90.3\\tmds.dbus.protocol.0.90.3.nupkg.sha512",
-    "C:\\Users\\siwon\\.nuget\\packages\\microsoft.netcore.app.ref\\9.0.14\\microsoft.netcore.app.ref.9.0.14.nupkg.sha512",
-    "C:\\Users\\siwon\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\9.0.14\\microsoft.windowsdesktop.app.ref.9.0.14.nupkg.sha512",
-    "C:\\Users\\siwon\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\9.0.14\\microsoft.aspnetcore.app.ref.9.0.14.nupkg.sha512",
-    "C:\\Users\\siwon\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\9.0.14\\microsoft.netcore.app.host.win-x64.9.0.14.nupkg.sha512"
+    "C:\\Users\\siwon\\.nuget\\packages\\tmds.dbus.protocol\\0.90.3\\tmds.dbus.protocol.0.90.3.nupkg.sha512"
   ],
   "logs": []
 }
