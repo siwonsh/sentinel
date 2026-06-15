@@ -4,6 +4,8 @@ using Avalonia.Data.Core;
 using Avalonia.Data.Core.Plugins;
 using System.Linq;
 using Avalonia.Markup.Xaml;
+using Microsoft.Extensions.DependencyInjection;
+using Sentinel.Services;
 using Sentinel.ViewModels;
 using Sentinel.Views;
 
@@ -18,14 +20,28 @@ public partial class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
+        var collection = new ServiceCollection();
+        collection.AddCommonServices();
+        
+        var services = collection.BuildServiceProvider();
+        
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             desktop.MainWindow = new MainWindow
             {
                 DataContext = new MainWindowViewModel(),
             };
+            desktop.Exit += (_, _) => services.Dispose();
         }
 
         base.OnFrameworkInitializationCompleted();
+    }
+}
+
+public static class ServiceCollectionExtensions
+{
+    public static void AddCommonServices(this IServiceCollection collection)
+    {
+        collection.AddSingleton<IEquipmentService, MockEquipmentService>();
     }
 }
