@@ -1,5 +1,8 @@
-﻿namespace Sentinel.Services;
+﻿using Sentinel.Models;
 
-public class TelemetryChangedEventArgs : EventArgs
+namespace Sentinel.Services;
+
+public class TelemetryChangedEventArgs(EquipmentUnit unit) : EventArgs
 {
+    public EquipmentUnit Unit { get; } = unit;
 }
