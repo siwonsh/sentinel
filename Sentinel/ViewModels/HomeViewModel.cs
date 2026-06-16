@@ -16,7 +16,7 @@ public partial class HomeViewModel : ViewModelBase
     {
         _equipmentService = equipmentService;
 
-        Task.Run(async () => await LoadAsync());
+        _ = LoadAsync();
 
         _equipmentService.TelemetryChanged += OnTelemetryChanged;
     }
