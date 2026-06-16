@@ -2,7 +2,6 @@
 using Avalonia.Collections;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Sentinel.Models;
 using Sentinel.Services;
 
 namespace Sentinel.ViewModels;

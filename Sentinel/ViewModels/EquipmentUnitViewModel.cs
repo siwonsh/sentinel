@@ -16,8 +16,6 @@ public partial class EquipmentUnitViewModel : ViewModelBase
 
     public void ApplyTelemetry(EquipmentUnit unit)
     {
-        Name = unit.Name;
-        Zone = unit.Zone;
         Status = unit.Status;
         Battery = unit.Battery;
         Temperature = unit.Temperature;
