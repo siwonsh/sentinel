@@ -1,8 +1,6 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
-using Avalonia.Data.Core;
 using Avalonia.Data.Core.Plugins;
-using System.Linq;
 using Avalonia.Markup.Xaml;
 using Microsoft.Extensions.DependencyInjection;
 using Sentinel.Services;
@@ -20,6 +18,8 @@ public partial class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
+        BindingPlugins.DataValidators.RemoveAt(0);
+        
         var collection = new ServiceCollection();
         collection.AddCommonServices();
         

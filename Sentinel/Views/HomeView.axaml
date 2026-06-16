@@ -24,9 +24,9 @@
                                         Header="Zone" />
                     <DataGridTextColumn Binding="{Binding Status, DataType=viewModels:EquipmentUnitViewModel}"
                                         Header="Statut" />
-                    <DataGridTextColumn Binding="{Binding Battery, DataType=viewModels:EquipmentUnitViewModel, StringFormat='{}{0}%'}"
+                    <DataGridTextColumn Binding="{Binding Battery, DataType=viewModels:EquipmentUnitViewModel, StringFormat='{}{0:0.0}%'}"
                                         Header="Batt. %" />
-                    <DataGridTextColumn Binding="{Binding Temperature, DataType=viewModels:EquipmentUnitViewModel, StringFormat='{}{0}°C'}"
+                    <DataGridTextColumn Binding="{Binding Temperature, DataType=viewModels:EquipmentUnitViewModel, StringFormat='{}{0:0.0}°C'}"
                                         Header="Temp. °C" />
                     <DataGridTextColumn Binding="{Binding Signal, DataType=viewModels:EquipmentUnitViewModel, StringFormat='{}{0}%'}"
                                         Header="Signal %" />
@@ -47,11 +47,21 @@
                         <TextBlock Text="Télémétrie (live)"
                                    FontWeight="Bold" />
                         <TextBlock Text="{Binding SelectedUnit?.Status, StringFormat='{}Statut : {0}'}" />
-                        <TextBlock Text="{Binding SelectedUnit?.Battery, StringFormat='{}Batterie : {0} %'}" />
-                        <TextBlock Text="{Binding SelectedUnit?.Temperature, StringFormat='{}Température : {0} °C'}" />
+                        <TextBlock Text="{Binding SelectedUnit?.Battery, StringFormat='{}Batterie : {0:0.0} %'}" />
+                        <TextBlock Text="{Binding SelectedUnit?.Temperature, StringFormat='{}Température : {0:0.0} °C'}" />
                         <TextBlock Text="{Binding SelectedUnit?.Signal, StringFormat='{}Signal : {0} %'}" />
                         <TextBlock Text="{Binding SelectedUnit?.LastSeen, StringFormat='{}Vu à : {0:H:mm:ss}'}"
                                    Foreground="Gray"/>
+                        
+                        <TextBlock Text="Editer"
+                                   FontWeight="Bold" />
+                        <TextBlock Text="Nom" />
+                        <TextBox Text="{Binding EditViewModel?.Name, Mode=TwoWay}" />
+                        <TextBlock Text="Zone" />
+                        <TextBox Text="{Binding EditViewModel?.Zone, Mode=TwoWay}" />
+                        <Button Command="{Binding SaveCommand}" HorizontalAlignment="Right">
+                            Enregistrer
+                        </Button>
                     </StackPanel>
                 </Panel>
             </Border>

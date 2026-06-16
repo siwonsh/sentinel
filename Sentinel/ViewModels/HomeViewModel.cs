@@ -20,6 +20,8 @@ public partial class HomeViewModel : ViewModelBase
 
     public bool HasSelection => SelectedUnit is not null;
     
+    [ObservableProperty] private EquipmentEditViewModel _editViewModel = new();
+    
     public HomeViewModel(IEquipmentService equipmentService)
     {
         _equipmentService = equipmentService;
@@ -44,6 +46,8 @@ public partial class HomeViewModel : ViewModelBase
                 return false;
             }
         };
+        
+        EditViewModel.ErrorsChanged += (_, _) => SaveCommand.NotifyCanExecuteChanged();
     }
 
     [RelayCommand]
@@ -73,5 +77,14 @@ public partial class HomeViewModel : ViewModelBase
     partial void OnFilterTextChanged(string? value)
     {
         FilteredUnits.Refresh();
+    }
+
+    public bool CanSave => SelectedUnit is not null && !EditViewModel.HasErrors;
+
+    [RelayCommand(CanExecute = nameof(CanSave))]
+    private void Save()
+    {
+        SelectedUnit!.Name = EditViewModel.Name;
+        SelectedUnit.Zone = EditViewModel.Zone;
     }
 }
