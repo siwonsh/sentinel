@@ -14,23 +14,47 @@
             </TextBlock>
             <TextBox Text="{Binding FilterText}" />
         </StackPanel>
-        <DataGrid ItemsSource="{Binding FilteredUnits}" IsReadOnly="True" CanUserSortColumns="True">
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Name, DataType=viewModels:EquipmentUnitViewModel}"
-                                    Header="Nom" />
-                <DataGridTextColumn Binding="{Binding Zone, DataType=viewModels:EquipmentUnitViewModel}"
-                                    Header="Zone" />
-                <DataGridTextColumn Binding="{Binding Status, DataType=viewModels:EquipmentUnitViewModel}"
-                                    Header="Statut" />
-                <DataGridTextColumn Binding="{Binding Battery, DataType=viewModels:EquipmentUnitViewModel, StringFormat='{}{0}%'}"
-                                    Header="Batt. %" />
-                <DataGridTextColumn Binding="{Binding Temperature, DataType=viewModels:EquipmentUnitViewModel, StringFormat='{}{0}°C'}"
-                                    Header="Temp. °C" />
-                <DataGridTextColumn Binding="{Binding Signal, DataType=viewModels:EquipmentUnitViewModel, StringFormat='{}{0}%'}"
-                                    Header="Signal %" />
-                <DataGridTextColumn Binding="{Binding LastSeen, DataType=viewModels:EquipmentUnitViewModel, StringFormat='dd/MM/yy H:mm:ss'}"
-                                    Header="Vu à" />
-            </DataGrid.Columns>
-        </DataGrid>
+        <StackPanel Orientation="Horizontal">
+            <DataGrid ItemsSource="{Binding FilteredUnits}" IsReadOnly="True" CanUserSortColumns="True"
+                      SelectedItem="{Binding SelectedUnit}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Name, DataType=viewModels:EquipmentUnitViewModel}"
+                                        Header="Nom" />
+                    <DataGridTextColumn Binding="{Binding Zone, DataType=viewModels:EquipmentUnitViewModel}"
+                                        Header="Zone" />
+                    <DataGridTextColumn Binding="{Binding Status, DataType=viewModels:EquipmentUnitViewModel}"
+                                        Header="Statut" />
+                    <DataGridTextColumn Binding="{Binding Battery, DataType=viewModels:EquipmentUnitViewModel, StringFormat='{}{0}%'}"
+                                        Header="Batt. %" />
+                    <DataGridTextColumn Binding="{Binding Temperature, DataType=viewModels:EquipmentUnitViewModel, StringFormat='{}{0}°C'}"
+                                        Header="Temp. °C" />
+                    <DataGridTextColumn Binding="{Binding Signal, DataType=viewModels:EquipmentUnitViewModel, StringFormat='{}{0}%'}"
+                                        Header="Signal %" />
+                    <DataGridTextColumn Binding="{Binding LastSeen, DataType=viewModels:EquipmentUnitViewModel, StringFormat='dd/MM/yy H:mm:ss'}"
+                                        Header="Vu à" />
+                </DataGrid.Columns>
+            </DataGrid>
+            <Border>
+                <Panel>
+                    <TextBlock Text="Sélectionnez une unité dans la grille"
+                               IsVisible="{Binding !HasSelection}" />
+                    <StackPanel IsVisible="{Binding HasSelection}">
+                        <TextBlock Text="{Binding SelectedUnit?.Name}"
+                                   FontWeight="Bold" />
+                        <TextBlock Text="{Binding SelectedUnit?.Zone}"
+                                   Foreground="Gray" />
+                    
+                        <TextBlock Text="Télémétrie (live)"
+                                   FontWeight="Bold" />
+                        <TextBlock Text="{Binding SelectedUnit?.Status, StringFormat='{}Statut : {0}'}" />
+                        <TextBlock Text="{Binding SelectedUnit?.Battery, StringFormat='{}Batterie : {0} %'}" />
+                        <TextBlock Text="{Binding SelectedUnit?.Temperature, StringFormat='{}Température : {0} °C'}" />
+                        <TextBlock Text="{Binding SelectedUnit?.Signal, StringFormat='{}Signal : {0} %'}" />
+                        <TextBlock Text="{Binding SelectedUnit?.LastSeen, StringFormat='{}Vu à : {0:H:mm:ss}'}"
+                                   Foreground="Gray"/>
+                    </StackPanel>
+                </Panel>
+            </Border>
+        </StackPanel>
     </StackPanel>
 </UserControl>

@@ -11,9 +11,14 @@ public partial class HomeViewModel : ViewModelBase
 {
     private IEquipmentService _equipmentService;
     private ObservableCollection<EquipmentUnitViewModel> Units { get; set; } = [];
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(HasSelection))]
+    private EquipmentUnitViewModel? _selectedUnit;
     
     [ObservableProperty] private string? _filterText;
     public DataGridCollectionView FilteredUnits { get; }
+
+    public bool HasSelection => SelectedUnit is not null;
     
     public HomeViewModel(IEquipmentService equipmentService)
     {
