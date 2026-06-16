@@ -10,7 +10,7 @@ namespace Sentinel.ViewModels;
 public partial class HomeViewModel : ViewModelBase
 {
     private IEquipmentService _equipmentService;
-    private ObservableCollection<EquipmentUnit> Units { get; set; } = [];
+    private ObservableCollection<EquipmentUnitViewModel> Units { get; set; } = [];
     
     [ObservableProperty] private string? _filterText;
     public DataGridCollectionView FilteredUnits { get; }
@@ -29,7 +29,7 @@ public partial class HomeViewModel : ViewModelBase
             {
                 if (string.IsNullOrEmpty(FilterText)) return true;
             
-                if (o is EquipmentUnit equipmentUnit)
+                if (o is EquipmentUnitViewModel equipmentUnit)
                 {
                     return equipmentUnit.Name.Contains(FilterText, StringComparison.OrdinalIgnoreCase) ||
                            equipmentUnit.Zone.Contains(FilterText, StringComparison.OrdinalIgnoreCase) ||
@@ -48,7 +48,7 @@ public partial class HomeViewModel : ViewModelBase
         var units = await _equipmentService.GetFleetAsync();
         foreach (var unit in units)
         {
-            Units.Add(unit);
+            Units.Add(new EquipmentUnitViewModel(unit));
         }
     }
 
@@ -59,7 +59,7 @@ public partial class HomeViewModel : ViewModelBase
         {
             if (Units[i].Id == id)
             {
-                Units[i] = e.Unit;
+                Units[i].ApplyTelemetry(e.Unit);
                 break;
             }
         }

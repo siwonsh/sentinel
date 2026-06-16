@@ -16,19 +16,19 @@
         </StackPanel>
         <DataGrid ItemsSource="{Binding FilteredUnits}" IsReadOnly="True" CanUserSortColumns="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Name, DataType=models:EquipmentUnit}"
+                <DataGridTextColumn Binding="{Binding Name, DataType=viewModels:EquipmentUnitViewModel}"
                                     Header="Nom" />
-                <DataGridTextColumn Binding="{Binding Zone, DataType=models:EquipmentUnit}"
+                <DataGridTextColumn Binding="{Binding Zone, DataType=viewModels:EquipmentUnitViewModel}"
                                     Header="Zone" />
-                <DataGridTextColumn Binding="{Binding Status, DataType=models:EquipmentUnit}"
+                <DataGridTextColumn Binding="{Binding Status, DataType=viewModels:EquipmentUnitViewModel}"
                                     Header="Statut" />
-                <DataGridTextColumn Binding="{Binding Battery, DataType=models:EquipmentUnit, StringFormat='{}{0}%'}"
+                <DataGridTextColumn Binding="{Binding Battery, DataType=viewModels:EquipmentUnitViewModel, StringFormat='{}{0}%'}"
                                     Header="Batt. %" />
-                <DataGridTextColumn Binding="{Binding Temperature, DataType=models:EquipmentUnit, StringFormat='{}{0}°C'}"
+                <DataGridTextColumn Binding="{Binding Temperature, DataType=viewModels:EquipmentUnitViewModel, StringFormat='{}{0}°C'}"
                                     Header="Temp. °C" />
-                <DataGridTextColumn Binding="{Binding Signal, DataType=models:EquipmentUnit, StringFormat='{}{0}%'}"
+                <DataGridTextColumn Binding="{Binding Signal, DataType=viewModels:EquipmentUnitViewModel, StringFormat='{}{0}%'}"
                                     Header="Signal %" />
-                <DataGridTextColumn Binding="{Binding LastSeen, DataType=models:EquipmentUnit, StringFormat='dd/MM/yy H:mm:ss'}"
+                <DataGridTextColumn Binding="{Binding LastSeen, DataType=viewModels:EquipmentUnitViewModel, StringFormat='dd/MM/yy H:mm:ss'}"
                                     Header="Vu à" />
             </DataGrid.Columns>
         </DataGrid>

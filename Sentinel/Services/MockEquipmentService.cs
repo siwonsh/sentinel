@@ -38,9 +38,9 @@ public class MockEquipmentService : IEquipmentService, IDisposable
                 {
                     var newUnit = unit with
                     {
-                        Battery = Random.Shared.NextDouble(),
-                        Signal = Random.Shared.Next(),
-                        Temperature = Random.Shared.NextDouble(),
+                        Battery = Random.Shared.NextDouble() * 100,
+                        Signal = Random.Shared.Next(100),
+                        Temperature = Random.Shared.NextDouble() * 1000 - 273,
                         LastSeen = DateTimeOffset.UtcNow
                     };
                     
