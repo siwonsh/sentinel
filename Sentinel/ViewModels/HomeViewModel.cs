@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using Avalonia.Collections;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Sentinel.Models;
@@ -8,9 +9,11 @@ namespace Sentinel.ViewModels;
 
 public partial class HomeViewModel : ViewModelBase
 {
-    public ObservableCollection<EquipmentUnit> Units { get; set; } = [];
-
     private IEquipmentService _equipmentService;
+    private ObservableCollection<EquipmentUnit> Units { get; set; } = [];
+    
+    [ObservableProperty] private string? _filterText;
+    public DataGridCollectionView FilteredUnits { get; }
     
     public HomeViewModel(IEquipmentService equipmentService)
     {
@@ -19,6 +22,23 @@ public partial class HomeViewModel : ViewModelBase
         _ = LoadAsync();
 
         _equipmentService.TelemetryChanged += OnTelemetryChanged;
+        
+        FilteredUnits = new DataGridCollectionView(Units)
+        {
+            Filter = o =>
+            {
+                if (string.IsNullOrEmpty(FilterText)) return true;
+            
+                if (o is EquipmentUnit equipmentUnit)
+                {
+                    return equipmentUnit.Name.Contains(FilterText, StringComparison.OrdinalIgnoreCase) ||
+                           equipmentUnit.Zone.Contains(FilterText, StringComparison.OrdinalIgnoreCase) ||
+                           equipmentUnit.Status.ToString().Contains(FilterText, StringComparison.OrdinalIgnoreCase);
+                }
+
+                return false;
+            }
+        };
     }
 
     [RelayCommand]
@@ -43,5 +63,10 @@ public partial class HomeViewModel : ViewModelBase
                 break;
             }
         }
+    }
+
+    partial void OnFilterTextChanged(string? value)
+    {
+        FilteredUnits.Refresh();
     }
 }

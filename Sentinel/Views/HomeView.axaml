@@ -2,26 +2,35 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:models="clr-namespace:Sentinel.Models"
              xmlns:viewModels="clr-namespace:Sentinel.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Sentinel.Views.HomeView"
              x:DataType="viewModels:HomeViewModel">
-    <DataGrid ItemsSource="{Binding Units}" IsReadOnly="True">
-        <DataGrid.Columns>
-            <DataGridTextColumn Binding="{Binding Name}"
-                                Header="Nom" />
-            <DataGridTextColumn Binding="{Binding Zone}"
-                                Header="Zone" />
-            <DataGridTextColumn Binding="{Binding Status}"
-                                Header="Statut" />
-            <DataGridTextColumn Binding="{Binding Battery, StringFormat='{}{0}%'}"
-                                Header="Batt. %" />
-            <DataGridTextColumn Binding="{Binding Temperature, StringFormat='{}{0}°C'}"
-                                Header="Temp. °C" />
-            <DataGridTextColumn Binding="{Binding Signal, StringFormat='{}{0}%'}"
-                                Header="Signal %" />
-            <DataGridTextColumn Binding="{Binding LastSeen, StringFormat='dd/MM/yy H:mm:ss'}"
-                                Header="Vu à" />
-        </DataGrid.Columns>
-    </DataGrid>
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock VerticalAlignment="Center">
+                Filtre :  
+            </TextBlock>
+            <TextBox Text="{Binding FilterText}" />
+        </StackPanel>
+        <DataGrid ItemsSource="{Binding FilteredUnits}" IsReadOnly="True" CanUserSortColumns="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Name, DataType=models:EquipmentUnit}"
+                                    Header="Nom" />
+                <DataGridTextColumn Binding="{Binding Zone, DataType=models:EquipmentUnit}"
+                                    Header="Zone" />
+                <DataGridTextColumn Binding="{Binding Status, DataType=models:EquipmentUnit}"
+                                    Header="Statut" />
+                <DataGridTextColumn Binding="{Binding Battery, DataType=models:EquipmentUnit, StringFormat='{}{0}%'}"
+                                    Header="Batt. %" />
+                <DataGridTextColumn Binding="{Binding Temperature, DataType=models:EquipmentUnit, StringFormat='{}{0}°C'}"
+                                    Header="Temp. °C" />
+                <DataGridTextColumn Binding="{Binding Signal, DataType=models:EquipmentUnit, StringFormat='{}{0}%'}"
+                                    Header="Signal %" />
+                <DataGridTextColumn Binding="{Binding LastSeen, DataType=models:EquipmentUnit, StringFormat='dd/MM/yy H:mm:ss'}"
+                                    Header="Vu à" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
 </UserControl>
