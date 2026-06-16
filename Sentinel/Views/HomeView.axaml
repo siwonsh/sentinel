@@ -3,23 +3,25 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:Sentinel.ViewModels"
-             xmlns:models="clr-namespace:Sentinel.Models"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Sentinel.Views.HomeView"
              x:DataType="viewModels:HomeViewModel">
-    <ItemsControl ItemsSource="{Binding Units}">
-        <ItemsControl.ItemTemplate>
-            <DataTemplate x:DataType="models:EquipmentUnit">
-                <StackPanel>
-                    <TextBlock Text="{Binding Name}" />
-                    <TextBlock Text="{Binding Zone}" />
-                    <TextBlock Text="{Binding Status}" />
-                    <TextBlock Text="{Binding Battery, StringFormat='{}{0}%'}" />
-                    <TextBlock Text="{Binding Temperature, StringFormat='{}{0}°C'}" />
-                    <TextBlock Text="{Binding Signal, StringFormat='{}{0}%'}" />
-                    <TextBlock Text="{Binding LastSeen, StringFormat='dd:MM:yy H:mm:ss'}" />
-                </StackPanel>
-            </DataTemplate>
-        </ItemsControl.ItemTemplate>
-    </ItemsControl>
+    <DataGrid ItemsSource="{Binding Units}" IsReadOnly="True">
+        <DataGrid.Columns>
+            <DataGridTextColumn Binding="{Binding Name}"
+                                Header="Nom" />
+            <DataGridTextColumn Binding="{Binding Zone}"
+                                Header="Zone" />
+            <DataGridTextColumn Binding="{Binding Status}"
+                                Header="Statut" />
+            <DataGridTextColumn Binding="{Binding Battery, StringFormat='{}{0}%'}"
+                                Header="Batt. %" />
+            <DataGridTextColumn Binding="{Binding Temperature, StringFormat='{}{0}°C'}"
+                                Header="Temp. °C" />
+            <DataGridTextColumn Binding="{Binding Signal, StringFormat='{}{0}%'}"
+                                Header="Signal %" />
+            <DataGridTextColumn Binding="{Binding LastSeen, StringFormat='dd/MM/yy H:mm:ss'}"
+                                Header="Vu à" />
+        </DataGrid.Columns>
+    </DataGrid>
 </UserControl>
