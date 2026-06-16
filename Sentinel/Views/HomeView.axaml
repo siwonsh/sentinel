@@ -1,0 +1,25 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:Sentinel.ViewModels"
+             xmlns:models="clr-namespace:Sentinel.Models"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Sentinel.Views.HomeView"
+             x:DataType="viewModels:HomeViewModel">
+    <ItemsControl ItemsSource="{Binding Units}">
+        <ItemsControl.ItemTemplate>
+            <DataTemplate x:DataType="models:EquipmentUnit">
+                <StackPanel>
+                    <TextBlock Text="{Binding Name}" />
+                    <TextBlock Text="{Binding Zone}" />
+                    <TextBlock Text="{Binding Status}" />
+                    <TextBlock Text="{Binding Battery, StringFormat='{}{0}%'}" />
+                    <TextBlock Text="{Binding Temperature, StringFormat='{}{0}°C'}" />
+                    <TextBlock Text="{Binding Signal, StringFormat='{}{0}%'}" />
+                    <TextBlock Text="{Binding LastSeen, StringFormat='dd:MM:yy H:mm:ss'}" />
+                </StackPanel>
+            </DataTemplate>
+        </ItemsControl.ItemTemplate>
+    </ItemsControl>
+</UserControl>
