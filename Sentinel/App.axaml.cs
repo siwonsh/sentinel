@@ -29,7 +29,7 @@ public partial class App : Application
         {
             desktop.MainWindow = new MainWindow
             {
-                DataContext = new MainWindowViewModel(),
+                DataContext = services.GetRequiredService<MainViewModel>(),
             };
             desktop.Exit += (_, _) => services.Dispose();
         }
@@ -43,5 +43,7 @@ public static class ServiceCollectionExtensions
     public static void AddCommonServices(this IServiceCollection collection)
     {
         collection.AddSingleton<IEquipmentService, MockEquipmentService>();
+        collection.AddTransient<MainViewModel>();
+        collection.AddTransient<HomeViewModel>();
     }
 }
