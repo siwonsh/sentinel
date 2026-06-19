@@ -1,0 +1,73 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:Sentinel.Controls">
+    <ControlTheme x:Key="SignalBarsTheme"
+                  TargetType="{x:Type controls:SignalBars}">
+        <Setter Property="Background" Value="DodgerBlue" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <StackPanel Orientation="Horizontal" Spacing="1">
+                    <Rectangle x:Name="Bar1"
+                               Fill="{TemplateBinding Background}"
+                               VerticalAlignment="Bottom"
+                               Opacity="0.5"
+                               Width="2"
+                               Height="4" />
+                    <Rectangle x:Name="Bar2"
+                               Fill="{TemplateBinding Background}"
+                               VerticalAlignment="Bottom"
+                               Opacity="0.5"
+                               Width="2"
+                               Height="6" />
+                    <Rectangle x:Name="Bar3"
+                               Fill="{TemplateBinding Background}"
+                               VerticalAlignment="Bottom"
+                               Opacity="0.5"
+                               Width="2"
+                               Height="8" />
+                    <Rectangle x:Name="Bar4"
+                               Fill="{TemplateBinding Background}"
+                               VerticalAlignment="Bottom"
+                               Opacity="0.5"
+                               Width="2"
+                               Height="10" />
+                </StackPanel>
+            </ControlTemplate>
+        </Setter>
+        
+        <Style Selector="^:l1 /template/ Rectangle#Bar1">
+            <Setter Property="Opacity" Value="1"/>
+        </Style>
+        
+        
+        <Style Selector="^:l2 /template/ Rectangle#Bar1">
+            <Setter Property="Opacity" Value="1"/>
+        </Style>
+        <Style Selector="^:l2 /template/ Rectangle#Bar2">
+            <Setter Property="Opacity" Value="1"/>
+        </Style>
+        
+        <Style Selector="^:l3 /template/ Rectangle#Bar1">
+            <Setter Property="Opacity" Value="1"/>
+        </Style>
+        <Style Selector="^:l3 /template/ Rectangle#Bar2">
+            <Setter Property="Opacity" Value="1"/>
+        </Style>
+        <Style Selector="^:l3 /template/ Rectangle#Bar3">
+            <Setter Property="Opacity" Value="1"/>
+        </Style>
+        
+        <Style Selector="^:l4 /template/ Rectangle#Bar1">
+            <Setter Property="Opacity" Value="1"/>
+        </Style>
+        <Style Selector="^:l4 /template/ Rectangle#Bar2">
+            <Setter Property="Opacity" Value="1"/>
+        </Style>
+        <Style Selector="^:l4 /template/ Rectangle#Bar3">
+            <Setter Property="Opacity" Value="1"/>
+        </Style>
+        <Style Selector="^:l4 /template/ Rectangle#Bar4">
+            <Setter Property="Opacity" Value="1"/>
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>
